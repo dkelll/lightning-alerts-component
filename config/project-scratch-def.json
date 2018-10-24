@@ -1,0 +1,26 @@
+{
+    "orgName": "Client Care",
+    "edition": "Developer",
+    "username": "",
+    "adminEmail": "",
+    "hasSampleData": false,
+    "features": [
+        "CustomApps",
+        "CustomTabs",
+        "ForceComPlatform",
+        "LightningServiceConsole",
+        "ServiceCloud",
+        "StateAndCountryPicklist"
+    ],
+    "orgPreferences" : {
+        "enabled": [
+            "S1DesktopEnabled", 
+            "ChatterEnabled",
+            "NotesReservedPref01",
+            "ShowViewHierarchyLink",
+            "IsNameSuffixEnabled"
+        ],
+        "disabled": ["S1EncryptedStoragePref2"]
+    },
+    "release__c": ""
+}

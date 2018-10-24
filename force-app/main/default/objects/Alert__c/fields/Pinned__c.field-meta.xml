@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pinned__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used to pin alerts to the top of the alerts list.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Pin this item to the top of the Alerts list.</inlineHelpText>
+    <label>Pinned</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

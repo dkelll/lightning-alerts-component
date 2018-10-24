@@ -1,0 +1,34 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasSObjectName,force:hasRecordId" controller="AlertsController">
+    <aura:attribute name="marker"       type="string"       description="Used to add a visual indicator (css) to the account" />
+    <aura:attribute name="alerts"       type="Alert__c[]"   description="A list of the Alerts for the related obj, if any" />
+    <aura:attribute name="qty"          type="Integer"      description="Quantity of Alerts for the related object" default="0"/>
+    <aura:attribute name="pageRowQty"   type="Integer"      description="How many Alerts to display by default. Defaults to 4" default="4" />
+    <aura:attribute name="inEditMode"     type="Boolean"    description="Hides things that should be inaccessible when a child record is being edited." default="false" />
+
+    <aura:handler name="init" value="{!this}" action="{! c.initAlerts }" />
+    <aura:handler event="force:refreshView" action="{! c.initAlerts }" includeFacets="true"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+
+    <lightning:card aura:id="alerts" class="slds-card_boundary" iconName="custom:custom53">
+        <aura:set attribute="title">
+                <h2>
+                    <a class="slds-card__header-link baseCard__header-title-container">
+                        {! v.sObjectName+' Alerts' } ({! v.qty })
+                    </a>
+                </h2>
+        </aura:set>
+        <aura:set attribute="actions">
+                <lightning:button label="New" title="Create a new Alert" onclick="{!c.createRecord}" disabled="{!v.inEditMode}" />
+        </aura:set>
+        <aura:set attribute="footer">
+            <aura:if isTrue="{! v.qty gt 4}">
+                <lightning:button variant="base" label="View More..." title="View more Alerts" onclick="{! c.viewMoreAlerts }" disabled="{! v.qty lt v.pageRowQty }" />
+            </aura:if>
+        </aura:set>
+        <lightning:accordion activeSectionName="myId" >
+            <aura:iteration items="{! v.alerts }" var="alert" start="0" end="{!v.pageRowQty}">
+                <c:ccp_SingleAlert record="{! alert }" type="{! alert.Type__c }" />
+            </aura:iteration>
+        </lightning:accordion>
+    </lightning:card>
+</aura:component>

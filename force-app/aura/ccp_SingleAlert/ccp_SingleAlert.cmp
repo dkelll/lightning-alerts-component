@@ -1,0 +1,33 @@
+<aura:component implements="force:hasRecordId,force:hasSObjectName">
+    <aura:attribute name="record"  type="Alert__c" description="An existing Alert object" />
+    <aura:attribute name="type"         type="String"   description="Priority/Type of Alert (i.e. Low, Medium, or High)" default="low"  />
+    <aura:attribute name="createdDate"  type="Object"   description="Date the record was created." access="private" />
+    <aura:attribute name="localDate"    type="String"   description="Formatted version of CreatedDate" access="private" />
+    
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:handler name="init" value="{!this}" action="{! c.setRelDate }" />
+        
+        <lightning:accordionSection class="{! 'slds-p-horizontal_xx-small ' +v.record.Type__c }" >
+            <aura:set attribute="label" value="{!v.record.Name}" />
+            <aura:set attribute="name" value="myId" />
+            <aura:set attribute="actions">
+                <lightning:relativeDateTime value="{! v.createdDate }" class="slds-text-body_small slds-text-color_weak slds-p-horizontal_large" title="{!v.localDate}" />
+                <lightning:buttonMenu aura:id="alertMenu" alternativeText="Alert Options" menuAlignment="right" iconSize="x-small" onselect="{! c.handleButtonMenuSelectOption }">
+                    <lightning:menuItem value="edit" label="Edit" iconName="utility:edit" />
+                    <lightning:menuItem value="delete" label="Delete" iconName="utility:delete" />
+                    <!-- <aura:if isTrue="{!v.record.Pinned__c}" >
+                        <lightning:menuItem value="unpin" label="Unpin" iconName="utility:pinned"/>
+                    <aura:set attribute="else">
+                        <lightning:menuItem value="Pin" label="Pin" iconName="utility:pin" />
+                    </aura:set>
+                </aura:if> -->
+                </lightning:buttonMenu>
+            </aura:set>
+            <aura:set attribute="body">
+                <p>
+                    <lightning:formattedText linkify="true" value="{!v.record.description__c}" />
+                </p>
+            </aura:set>
+        </lightning:accordionSection>
+</aura:component>

@@ -1,0 +1,15 @@
+.THIS .slds-accordion__summary-action svg {
+    margin-right: .5em;
+}
+
+.THIS.High {
+    border-left: 5px solid #c23934;
+}
+
+.THIS.Medium {
+    border-left: 5px solid #ffb75d;
+}
+
+.THIS.Low {
+    border-left: 5px solid #04844b;
+}

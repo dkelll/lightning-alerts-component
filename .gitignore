@@ -1,0 +1,5 @@
+.DS_Store
+package.xml
+.sfdx/
+.vscode/
+md_deploy/
