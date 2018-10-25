@@ -20,7 +20,6 @@
                        showCloseButton: true,
                        cssClass: "",
                        closeCallback: function() {
-                        //helper.loadAlerts(component);
                         $A.get('e.force:refreshView').fire();
                        }
                    });
@@ -31,5 +30,5 @@
     viewMoreAlerts : function (component) {
         var qty = component.get("v.pageRowQty");
         component.set("v.pageRowQty", qty+4);
-    },
+    }
 })
