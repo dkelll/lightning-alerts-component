@@ -7,9 +7,9 @@
     },
 
     setRelDate : function(component,event,helper) {
-        var createdDate = new Date(component.get("v.record.CreatedDate"));
-        component.set("v.createdDate", createdDate);
-        var localizedDateTime = $A.localizationService.formatDate(createdDate, "dd MMM yyyy, HH:mm");
+        var lastModified = new Date(component.get("v.record.LastModifiedDate"));
+        component.set("v.lastModified", lastModified);
+        var localizedDateTime = $A.localizationService.formatDate(lastModified, "dd MMM yyyy, HH:mm");
         component.set("v.localDate", localizedDateTime);
     }
 })
