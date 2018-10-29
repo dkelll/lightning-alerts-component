@@ -15,3 +15,4 @@ Admin
 Account.flexipage
 AppSwitcher
 force-app/main/default/objects/Account/*
+**test-result*

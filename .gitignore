@@ -3,3 +3,4 @@ package.xml
 .sfdx/
 .vscode/
 md_deploy/
+**test-result*
