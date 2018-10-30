@@ -1,3 +1,6 @@
+Account parentacct = new Account(name='Bob\'s Burgers');
+insert parentacct;
+
 // Create an empty list that will eventually hold the
 // records I need to create
 List<Alert__c> alerts = new List<Alert__c>();
@@ -17,7 +20,7 @@ for(Integer i = 0; i<amountOfRecordsToCreate; i++) {
     alert.name='Blimey doubloon brig hogshead lookout';
     alert.Description__c='Coxswain overhaul hogshead ballast draught splice the main brace sutler lad. Nelsons folly hearties splice the main brace fire in the hole coffer jury mast Barbary Coast swab. Provost Nelsons folly topsail walk the plank pirate carouser gibbet Yellow Jack.';
     alert.Pinned__c=false;
-    alert.Parent__c='0015B00000UwsVFQAZ';
+    alert.Parent__c=parentacct.id;
     alert.sObjectType__c='Account';
             // Here is where I randomize the picklist values.
     alert.Type__c = prioritiesPicklistValues.get(Integer.valueOf(Math.floor(Math.random() * prioritiesPicklistValues.size())));
