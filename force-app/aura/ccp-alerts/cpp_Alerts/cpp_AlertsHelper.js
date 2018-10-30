@@ -1,6 +1,5 @@
 ({
     loadAlerts : function(component) {
-        console.log('hi ' +component.get("v.alerts").length);
         component.set("v.qty", '');
         var getAlertsAction = component.get("c.getAlerts");
         getAlertsAction.setParams({ 

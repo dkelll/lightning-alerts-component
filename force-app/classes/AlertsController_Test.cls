@@ -64,4 +64,34 @@ private class AlertsController_Test {
 
         // Teardown
     }
+
+    @isTest
+    static void testToggleAlertPinWithNullAlert() {
+        // Setup
+        String result;
+
+        // Execute
+        try { result = AlertsController.toggleAlertPin(null); } 
+        catch(AuraHandledException e) { result = e.getMessage(); }
+
+        // Assertions
+        System.assertEquals('Script-thrown exception', result);
+    }
+
+    @isTest
+    static void testToggleAlertPinSuccess() {
+        // Setup
+        String result;
+        makeData();
+        Alert__c alert = [SELECT id, Pinned__c from Alert__c limit 1];
+
+        // Execute
+        try { result = AlertsController.toggleAlertPin(alert); } 
+        catch(AuraHandledException e) { result = e.getMessage(); }
+
+        // Assertions
+        Alert__c updatedAlert = [SELECT id, Pinned__c from Alert__c where id =: alert.id ];
+        System.assertEquals(true, updatedAlert.Pinned__c);
+        System.assertEquals('SUCCESS', result);
+    }
 }

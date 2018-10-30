@@ -37,5 +37,24 @@
                 });
             }                               
         });
+    },
+
+    togglePin: function(component) {
+        var alert = component.get("v.record");
+        var toggleAlertPin = component.get("c.toggleAlertPin");
+        console.table(alert);
+        toggleAlertPin.setParams({
+            alert: alert
+        });
+        toggleAlertPin.setCallback(this, function(response) {
+            var state = response.getState();
+            console.log("State: " + state);
+            console.log("response.status: " +response.getReturnValue());
+            if(state === "SUCCESS") {
+                $A.get('e.force:refreshView').fire();
+            }
+        }); 
+        $A.enqueueAction(toggleAlertPin);
+
     }
 })

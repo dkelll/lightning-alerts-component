@@ -1,4 +1,4 @@
-<aura:component implements="force:hasRecordId,force:hasSObjectName">
+<aura:component implements="force:hasRecordId,force:hasSObjectName" controller="AlertsController">
     <aura:attribute name="record"  type="Alert__c" description="An existing Alert object" />
     <aura:attribute name="type"         type="String"   description="Priority/Type of Alert (i.e. Low, Medium, or High)" default="low"  />
     <aura:attribute name="lastModified" type="Object"   description="Date the record was created." access="private" />
@@ -18,11 +18,17 @@
                     <aura:if isTrue="{!v.record.Pinned__c}" >
                         <lightning:menuItem value="unpin" label="Unpin" iconName="utility:pinned"/>
                     <aura:set attribute="else">
-                        <lightning:menuItem value="Pin" label="Pin" iconName="utility:pin" />
+                        <lightning:menuItem value="pin" label="Pin" iconName="utility:pin" />
                     </aura:set>
                 </aura:if>
                 </lightning:buttonMenu>
+                
             </aura:set>
+            <!-- <force:recordData aura:id="forceRecordCmp"
+                recordId="{!v.record.Id}"
+                layoutType="COMPACT"
+                fields="['Pinned__c']"
+                targetError="{!v.error}" /> -->
                 <p>
                     <lightning:formattedText linkify="true" value="{!v.record.description__c}" />
                 </p>

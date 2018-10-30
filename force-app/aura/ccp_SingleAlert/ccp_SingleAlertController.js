@@ -1,9 +1,10 @@
 ({
     handleButtonMenuSelectOption: function (component, event, helper) {
         var action = event.getParam("value");
-
+        
         if(action == "edit") helper.editRecord(component);
         if(action == "delete") helper.validateDelete(component);
+        if(action == "pin" || action == "unpin") helper.togglePin(component);   
     },
 
     setRelDate : function(component,event,helper) {

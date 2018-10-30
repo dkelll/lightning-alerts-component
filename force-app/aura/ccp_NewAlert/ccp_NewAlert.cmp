@@ -16,9 +16,9 @@
                 <lightning:inputField fieldName="Type__c" />
             </div>
             <div class="slds-col slds-size_1-of-2" />
-            <!-- <div class="slds-col slds-size_1-of-2 slds-m-vertical_medium">
+            <div class="slds-col slds-size_1-of-2 slds-m-vertical_medium">
                 <lightning:inputField fieldName="Pinned__c"/>                
-            </div> -->
+            </div>
         </div>
     
         <lightning:inputField fieldName="Parent__c"         value="{! v.parentId }"     class="slds-hide" />
